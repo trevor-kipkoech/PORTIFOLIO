@@ -1,0 +1,109 @@
+/* src/components/Navbar.css */
+.navbar {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 1000;
+  padding: 20px 0;
+  transition: all 0.3s;
+  background: transparent;
+}
+
+/* When you scroll down, it gets a white background and a subtle shadow */
+.navbar.scrolled {
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(10px);
+  padding: 12px 0;
+  border-bottom: 1px solid #fecdd3;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.03);
+}
+
+.nav-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 24px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+/* Explicitly force the logo to be maroon */
+.logo {
+  font-size: 1.5rem;
+  font-weight: 800;
+  color: #be123c;
+  text-decoration: none;
+  font-family: monospace;
+}
+
+/* Explicitly force the links to be dark gray */
+.nav-links {
+  display: flex;
+  gap: 36px;
+  list-style: none;
+}
+
+.nav-links a {
+  color: #1f2937;
+  text-decoration: none;
+  font-family: 'Lora', Georgia, serif;
+  font-weight: 600;
+  transition: color 0.2s;
+  position: relative;
+}
+
+.nav-links a::after {
+  content: '';
+  position: absolute;
+  bottom: -4px;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background: #be123c;
+  transition: width 0.3s;
+}
+
+.nav-links a:hover { color: #be123c; }
+.nav-links a:hover::after { width: 100%; }
+
+/* Hamburger menu icon for mobile */
+.nav-toggle {
+  display: none;
+  background: none;
+  border: none;
+  color: #1f2937;
+  font-size: 1.6rem;
+  cursor: pointer;
+}
+
+@media (max-width: 768px) {
+  .nav-toggle { display: block; }
+  .nav-links {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    flex-direction: column;
+    background: #ffffff;
+    padding: 20px;
+    gap: 20px;
+    transform: translateY(-200%);
+    transition: transform 0.3s;
+    border-bottom: 1px solid #fecdd3;
+    box-shadow: 0 10px 20px rgba(0,0,0,0.05);
+  }
+  .nav-links.open { transform: translateY(0); }
+}
+
+/* Add this to the bottom of Navbar.css */
+.nav-logo-img {
+  height: 35px; /* Keeps the logo neat in the navbar */
+  width: auto;
+}
+
+/* Fix for the logo link tag */
+.logo {
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+}
